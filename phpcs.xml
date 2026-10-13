@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<ruleset name="Kitaris Environment Indicator">
+    <description>Coding standards for the Kitaris Environment Indicator plugin</description>
+
+    <!-- Use Built North standards -->
+    <rule ref="BuiltNorth"/>
+
+    <!-- Set the text_domain for this plugin -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="kitaris-environment-indicator"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Set the prefixes for global functions -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="kitaris_environment_indicator"/>
+                <element value="KitarisEnvironmentIndicator"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>
