@@ -28,7 +28,6 @@ final class Settings
 	{
 		add_action('admin_menu', [self::class, 'add_page']);
 		add_action('admin_init', [self::class, 'register_setting']);
-		add_action('admin_enqueue_scripts', [self::class, 'enqueue']);
 	}
 
 	public static function add_page(): void
@@ -49,17 +48,6 @@ final class Settings
 			'sanitize_callback' => [self::class, 'sanitize'],
 			'default'           => [],
 		]);
-	}
-
-	public static function enqueue(string $hook): void
-	{
-		if ($hook !== 'settings_page_' . self::PAGE) {
-			return;
-		}
-
-		wp_enqueue_style('wp-color-picker');
-		wp_enqueue_script('wp-color-picker');
-		wp_add_inline_script('wp-color-picker', 'jQuery(function($){$(".kitaris-ei-color").wpColorPicker();});');
 	}
 
 	/**
@@ -147,7 +135,17 @@ final class Settings
 										id="kitaris-ei-<?php echo esc_attr($env); ?>-text"
 										name="<?php echo esc_attr($name); ?>[text]"
 										value="<?php echo esc_attr($saved[$env]['text'] ?? ''); ?>"
-										placeholder="<?php echo esc_attr($default['text']); ?>">
+										placeholder="<?php echo esc_attr($default['text']); ?>"
+										aria-describedby="kitaris-ei-<?php echo esc_attr($env); ?>-text-description">
+									<p class="description" id="kitaris-ei-<?php echo esc_attr($env); ?>-text-description">
+										<?php
+										printf(
+											/* translators: %s: default label, e.g. "Staging". */
+											esc_html__('Text shown in the admin bar. Leave empty to use "%s".', 'kitaris-environment-indicator'),
+											esc_html($default['text'])
+										);
+										?>
+									</p>
 								</td>
 								<td>
 									<label class="screen-reader-text" for="kitaris-ei-<?php echo esc_attr($env); ?>-color">
@@ -156,11 +154,20 @@ final class Settings
 										printf(esc_html__('Dot colour for %s', 'kitaris-environment-indicator'), esc_html($env));
 										?>
 									</label>
-									<input type="text" class="kitaris-ei-color"
+									<input type="color"
 										id="kitaris-ei-<?php echo esc_attr($env); ?>-color"
 										name="<?php echo esc_attr($name); ?>[color]"
-										value="<?php echo esc_attr($saved[$env]['color'] ?? ''); ?>"
-										data-default-color="<?php echo esc_attr($default['color']); ?>">
+										value="<?php echo esc_attr($saved[$env]['color'] ?? $default['color']); ?>"
+										aria-describedby="kitaris-ei-<?php echo esc_attr($env); ?>-color-description">
+									<p class="description" id="kitaris-ei-<?php echo esc_attr($env); ?>-color-description">
+										<?php
+										printf(
+											/* translators: %s: default hex colour, e.g. "#db7800". */
+											esc_html__('Colour of the dot next to the label. Default: %s.', 'kitaris-environment-indicator'),
+											'<code>' . esc_html($default['color']) . '</code>'
+										);
+										?>
+									</p>
 								</td>
 							</tr>
 						<?php endforeach; ?>
