@@ -1,0 +1,34 @@
+{
+	"name": "kitaris/environment-indicator",
+	"description": "Shows which environment a WordPress site is running as (local, development, staging or production) in the admin bar.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Built North",
+			"homepage": "https://builtnorth.co"
+		}
+	],
+	"require": {
+		"php": ">=8.1",
+		"siratik/environment-indicator": "^0.1"
+	},
+	"require-dev": {
+		"10up/wp_mock": "^1.0",
+		"phpunit/phpunit": "^9.6",
+		"yoast/phpunit-polyfills": "^2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"KitarisEnvironmentIndicator\\": "inc/classes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"KitarisEnvironmentIndicator\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "phpunit"
+	}
+}
