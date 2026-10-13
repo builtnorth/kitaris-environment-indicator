@@ -17,6 +17,7 @@ Kitaris Environment Indicator adds a small coloured badge to the admin bar showi
 * Reads the environment WordPress already knows about (`WP_ENVIRONMENT_TYPE`), so there is nothing to configure.
 * A distinct colour for each environment: local, development, staging and production.
 * Change any label or dot colour under Settings → Environment Indicator.
+* Need an environment WordPress has no type for, like QA or Client Review? Name it with a filter.
 * Shown to administrators only by default.
 * Lightweight: no front-end assets for visitors, no database tables, one option.
 
@@ -27,6 +28,14 @@ Add this to `wp-config.php` (or set the `WP_ENVIRONMENT_TYPE` environment variab
 `define( 'WP_ENVIRONMENT_TYPE', 'staging' );`
 
 Accepted values are `local`, `development`, `staging` and `production`. WordPress treats a site with no setting as `production`.
+
+= Custom environments =
+
+WordPress itself only knows the four types above. To show any other name, return it from a filter:
+
+`add_filter( 'siratik_environment_indicator_environment', function () { return 'qa'; } );`
+
+It is shown with the Custom colour and labelled with the name ("client-review" shows as "Client Review"), unless you set a Custom label in the settings. Return an empty string to hide the badge.
 
 = For developers =
 

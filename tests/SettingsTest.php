@@ -51,6 +51,14 @@ final class SettingsTest extends TestCase
 		);
 	}
 
+	public function test_keeps_the_custom_environment_row(): void
+	{
+		$this->assertSame(
+			['custom' => ['text' => 'QA', 'color' => '#0891b2']],
+			Settings::sanitize(['custom' => ['text' => 'QA', 'color' => '#0891b2']])
+		);
+	}
+
 	public function test_config_hands_saved_overrides_to_the_indicator_shape(): void
 	{
 		WP_Mock::userFunction('get_option', [

@@ -22,6 +22,9 @@ final class Settings
 		'development' => ['text' => 'Development', 'color' => '#3858e9'],
 		'staging'     => ['text' => 'Staging', 'color' => '#db7800'],
 		'production'  => ['text' => 'Production', 'color' => '#0cb034'],
+		// Names from the siratik_environment_indicator_environment filter; an
+		// empty label shows the name itself.
+		'custom'      => ['text' => '', 'color' => '#64748b'],
 	];
 
 	public static function register(): void
@@ -135,15 +138,23 @@ final class Settings
 										id="kitaris-ei-<?php echo esc_attr($env); ?>-text"
 										name="<?php echo esc_attr($name); ?>[text]"
 										value="<?php echo esc_attr($saved[$env]['text'] ?? ''); ?>"
-										placeholder="<?php echo esc_attr($default['text']); ?>"
+										placeholder="<?php echo esc_attr($env === 'custom' ? __('Environment name', 'kitaris-environment-indicator') : $default['text']); ?>"
 										aria-describedby="kitaris-ei-<?php echo esc_attr($env); ?>-text-description">
 									<p class="description" id="kitaris-ei-<?php echo esc_attr($env); ?>-text-description">
 										<?php
-										printf(
-											/* translators: %s: default label, e.g. "Staging". */
-											esc_html__('Text shown in the admin bar. Leave empty to use "%s".', 'kitaris-environment-indicator'),
-											esc_html($default['text'])
-										);
+										if ($env === 'custom') {
+											printf(
+												/* translators: %s: filter name. */
+												esc_html__('Used for any environment name other than the four above, set with the %s filter. Leave empty to show that name.', 'kitaris-environment-indicator'),
+												'<code>siratik_environment_indicator_environment</code>'
+											);
+										} else {
+											printf(
+												/* translators: %s: default label, e.g. "Staging". */
+												esc_html__('Text shown in the admin bar. Leave empty to use "%s".', 'kitaris-environment-indicator'),
+												esc_html($default['text'])
+											);
+										}
 										?>
 									</p>
 								</td>
