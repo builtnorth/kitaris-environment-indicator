@@ -59,6 +59,3 @@ No. The badge and its styles are only output for users allowed to see it.
 2. Settings → Environment Indicator.
 
 == Changelog ==
-
-= 1.0.0 =
-* First release.
