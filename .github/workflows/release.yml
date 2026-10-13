@@ -1,0 +1,31 @@
+name: Build and Release Plugin
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g., 1.2.0)"
+        required: true
+        type: string
+      prerelease:
+        description: "Is this a pre-release?"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  security-events: write
+
+jobs:
+  release:
+    permissions:
+      contents: write
+      security-events: write
+    uses: builtnorth/.github/.github/workflows/wp-org-plugin-release.yml@main
+    with:
+      version: ${{ inputs.version }}
+      prerelease: ${{ inputs.prerelease }}
+      php-versions: '["8.1", "8.2", "8.3", "8.4"]'
+      wordpress-versions: '["6.7", "latest"]'
+    secrets: inherit
