@@ -8,3 +8,4 @@ composer.lock
 .phpunit.result.cache
 phpcs.xml
 .wp-env.json
+.wordpress-org
