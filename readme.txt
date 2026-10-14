@@ -73,3 +73,8 @@ No. The badge and its styles are only output for users allowed to see it.
 2. Settings → Environment Indicator.
 
 == Changelog ==
+
+= 1.0.0 =
+* Add a Custom row for environments named by the filter
+* Pick colours with the native colour input and describe each field
+* Show the site environment in the admin bar
