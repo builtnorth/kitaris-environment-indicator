@@ -257,18 +257,6 @@ final class Settings
 					<span class="kitaris-ei-preview__text" data-fallback="<?php echo esc_attr($fallback); ?>"><?php echo esc_html($text); ?></span>
 				</span>
 			</div>
-			<?php if ($env === 'custom') : ?>
-				<p class="description kitaris-ei-row__note">
-					<?php
-					printf(
-						/* translators: 1: constant name, 2: filter name. */
-						esc_html__('For a name other than the four above, set with the %1$s constant or the %2$s filter.', 'kitaris-environment-indicator'),
-						'<code>SIRATIK_ENVIRONMENT_INDICATOR_CUSTOM</code>',
-						'<code>siratik_environment_indicator_custom</code>'
-					);
-					?>
-				</p>
-			<?php endif; ?>
 		</div>
 		<?php
 	}

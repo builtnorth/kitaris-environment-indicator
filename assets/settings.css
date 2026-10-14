@@ -82,11 +82,6 @@
 	white-space: nowrap;
 }
 
-.kitaris-ei .kitaris-ei-row__note {
-	grid-column: 2 / -1;
-	margin: 0;
-}
-
 /* The open picker floats over the rows below instead of stretching its own. */
 .kitaris-ei .wp-picker-container {
 	position: relative;
@@ -141,10 +136,6 @@
 
 	.kitaris-ei-row {
 		grid-template-columns: minmax(0, 1fr);
-	}
-
-	.kitaris-ei .kitaris-ei-row__note {
-		grid-column: 1;
 	}
 
 	.kitaris-ei-field {
