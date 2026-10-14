@@ -132,14 +132,44 @@
 	text-overflow: ellipsis;
 }
 
-/* Narrow: one column per row, labels shown in place of the header. */
-@container (inline-size < 40rem) {
+/*
+ * Narrower than the four columns need (tablets, small laptops with the admin
+ * menu open, phones): name and preview on one line, the two fields under
+ * them with their own labels in place of the header.
+ */
+@container (inline-size < 56rem) {
 	.kitaris-ei-head {
 		display: none;
 	}
 
 	.kitaris-ei-row {
-		grid-template-columns: minmax(0, 1fr);
+		/* A fixed right column, so every row lines up; it fits the open picker. */
+		grid-template-columns: minmax(0, 1fr) 16rem;
+		grid-template-areas:
+			"env preview"
+			"text color";
+		align-items: end;
+		row-gap: 0.75rem;
+	}
+
+	.kitaris-ei-row__env {
+		grid-area: env;
+		align-self: center;
+	}
+
+	.kitaris-ei-row__preview {
+		grid-area: preview;
+		align-self: center;
+		justify-self: start;
+		min-inline-size: 0;
+	}
+
+	.kitaris-ei-field--text {
+		grid-area: text;
+	}
+
+	.kitaris-ei-field--color {
+		grid-area: color;
 	}
 
 	.kitaris-ei-field {
@@ -157,5 +187,16 @@
 
 	.kitaris-ei-label {
 		max-inline-size: none;
+	}
+}
+
+/* Phones: each field gets the full width; the preview column is only as wide as the badge. */
+@container (inline-size < 32rem) {
+	.kitaris-ei-row {
+		grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+		grid-template-areas:
+			"env preview"
+			"text text"
+			"color color";
 	}
 }

@@ -256,28 +256,26 @@ final class Settings
 					<span class="kitaris-ei-current"><?php esc_html_e('This site', 'kitaris-environment-indicator'); ?></span>
 				<?php endif; ?>
 			</div>
-			<div class="kitaris-ei-field">
-				<label class="kitaris-ei-field__label" for="<?php echo esc_attr($id); ?>-text">
-					<?php
-					/* translators: %s: environment type. */
-					printf(esc_html__('Label for %s', 'kitaris-environment-indicator'), esc_html($env));
-					?>
-				</label>
+			<div class="kitaris-ei-field kitaris-ei-field--text">
+				<label class="kitaris-ei-field__label" for="<?php echo esc_attr($id); ?>-text"><?php esc_html_e('Label', 'kitaris-environment-indicator'); ?></label>
 				<input type="text" class="kitaris-ei-label"
 					id="<?php echo esc_attr($id); ?>-text"
+					aria-label="<?php
+						/* translators: %s: environment type. */
+						echo esc_attr(sprintf(__('Label for %s', 'kitaris-environment-indicator'), $env));
+					?>"
 					name="<?php echo esc_attr($name); ?>[text]"
 					value="<?php echo esc_attr($saved['text'] ?? ''); ?>"
 					placeholder="<?php echo esc_attr($env === 'custom' ? __('Environment name', 'kitaris-environment-indicator') : $default['text']); ?>">
 			</div>
-			<div class="kitaris-ei-field">
-				<label class="kitaris-ei-field__label" for="<?php echo esc_attr($id); ?>-color">
-					<?php
-					/* translators: %s: environment type. */
-					printf(esc_html__('Dot color for %s', 'kitaris-environment-indicator'), esc_html($env));
-					?>
-				</label>
+			<div class="kitaris-ei-field kitaris-ei-field--color">
+				<label class="kitaris-ei-field__label" for="<?php echo esc_attr($id); ?>-color"><?php esc_html_e('Dot color', 'kitaris-environment-indicator'); ?></label>
 				<input type="text" class="kitaris-ei-color"
 					id="<?php echo esc_attr($id); ?>-color"
+					aria-label="<?php
+						/* translators: %s: environment type. */
+						echo esc_attr(sprintf(__('Dot color for %s', 'kitaris-environment-indicator'), $env));
+					?>"
 					name="<?php echo esc_attr($name); ?>[color]"
 					value="<?php echo esc_attr($color); ?>"
 					data-default-color="<?php echo esc_attr($default['color']); ?>">
