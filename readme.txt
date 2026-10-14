@@ -18,7 +18,7 @@ Kitaris Environment Indicator adds a small coloured badge to the admin bar showi
 * A distinct colour for each environment: local, development, staging and production.
 * Change any label or dot colour under Settings → Environment Indicator, or set them in code.
 * Need an environment WordPress has no type for, like QA or Client Review? Give it a custom name.
-* Shown to administrators only by default.
+* Shown to anyone who can edit content (contributors and up) by default.
 * Lightweight: no front-end assets for visitors, no database tables, one option.
 
 = Set the environment =
@@ -51,9 +51,9 @@ Remove the settings page (saved settings still apply):
 
 `add_filter( 'kitaris_environment_indicator_settings_page', '__return_false' );`
 
-Who sees the badge is filterable:
+Who sees the badge is filterable; for example, administrators only:
 
-`add_filter( 'kitaris_environment_indicator_show', function ( $show, $environment ) { return current_user_can( 'edit_posts' ); }, 10, 2 );`
+`add_filter( 'kitaris_environment_indicator_show', function ( $show, $environment ) { return current_user_can( 'manage_options' ); }, 10, 2 );`
 
 Return `false` from the same filter to hide the badge.
 
@@ -61,7 +61,7 @@ Return `false` from the same filter to hide the badge.
 
 = The badge does not appear. =
 
-It is only shown to users who can manage options, and only while the admin bar is showing.
+It is only shown to users who can edit posts (contributors, authors, editors and administrators), and only while the admin bar is showing.
 
 = Does it add anything for visitors? =
 

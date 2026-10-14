@@ -66,7 +66,7 @@ final class Aliases
 		/**
 		 * Filters whether the current user sees the badge.
 		 *
-		 * @param bool   $show        Default: the user can manage options.
+		 * @param bool   $show        Default: the user can edit posts.
 		 * @param string $environment Environment the badge shows.
 		 */
 		return apply_filters('kitaris_environment_indicator_show', (bool) $show, (string) $environment);
