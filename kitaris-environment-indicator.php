@@ -18,6 +18,7 @@ declare(strict_types=1);
  * @package KitarisEnvironmentIndicator
  */
 
+use KitarisEnvironmentIndicator\Aliases;
 use KitarisEnvironmentIndicator\Settings;
 use Siratik\EnvironmentIndicator\Indicator;
 
@@ -31,6 +32,7 @@ if (! class_exists(Settings::class) && is_readable($kitaris_environment_indicato
 }
 
 Settings::register();
+Aliases::register();
 
 // siratik/package-loader settles which bundled copy of each package wins once
 // plugins_loaded has run, so the indicator is only touched after that.

@@ -24,8 +24,8 @@ final class Settings
 		'development' => ['text' => 'Development', 'color' => '#3858e9'],
 		'staging'     => ['text' => 'Staging', 'color' => '#db7800'],
 		'production'  => ['text' => 'Production', 'color' => '#0cb034'],
-		// A custom name from the SIRATIK_ENVIRONMENT_INDICATOR_CUSTOM constant or
-		// the siratik_environment_indicator_custom filter; an empty label shows
+		// A custom name from the KITARIS_ENVIRONMENT_INDICATOR_CUSTOM constant or
+		// the kitaris_environment_indicator_custom filter; an empty label shows
 		// the name itself.
 		'custom'      => ['text' => '', 'color' => '#64748b'],
 	];

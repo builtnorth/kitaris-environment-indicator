@@ -33,11 +33,11 @@ Accepted values are `local`, `development`, `staging` and `production`. WordPres
 
 WordPress itself only knows the four types above, and treats any other value as `production`. To show another name, keep `WP_ENVIRONMENT_TYPE` set to the type WordPress should behave as, and add a custom name:
 
-`define( 'SIRATIK_ENVIRONMENT_INDICATOR_CUSTOM', 'qa' );`
+`define( 'KITARIS_ENVIRONMENT_INDICATOR_CUSTOM', 'qa' );`
 
 Or set it with a filter, which wins over the constant:
 
-`add_filter( 'siratik_environment_indicator_custom', function () { return 'qa'; } );`
+`add_filter( 'kitaris_environment_indicator_custom', function () { return 'qa'; } );`
 
 It is shown with the Custom colour and labelled with the name ("client-review" shows as "Client Review"), unless you set a Custom label in the settings.
 
@@ -53,7 +53,7 @@ Remove the settings page (saved settings still apply):
 
 Who sees the badge is filterable:
 
-`add_filter( 'siratik_environment_indicator_show', function ( $show, $environment ) { return current_user_can( 'edit_posts' ); }, 10, 2 );`
+`add_filter( 'kitaris_environment_indicator_show', function ( $show, $environment ) { return current_user_can( 'edit_posts' ); }, 10, 2 );`
 
 Return `false` from the same filter to hide the badge.
 
