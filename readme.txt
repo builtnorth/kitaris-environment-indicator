@@ -69,8 +69,12 @@ No. The badge and its styles are only output for users allowed to see it.
 
 == Screenshots ==
 
-1. The environment badge in the admin bar.
-2. Settings → Environment Indicator.
+1. Settings → Environment Indicator: a label, dot color and live preview for each environment.
+2. The badge on a production site.
+3. The badge on a staging site.
+4. The badge on a development site.
+5. The badge on a local site.
+6. A custom environment with its own label.
 
 == Changelog ==
 
