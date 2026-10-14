@@ -4,6 +4,13 @@
  */
 ( function ( $ ) {
 	$( function () {
+		$( '#kitaris-ei-reset' ).on( 'click', function ( event ) {
+			// eslint-disable-next-line no-alert
+			if ( ! window.confirm( $( this ).data( 'confirm' ) ) ) {
+				event.preventDefault();
+			}
+		} );
+
 		$( '.kitaris-ei-row' ).each( function () {
 			var $row = $( this );
 			var preview = $row.find( '.kitaris-ei-preview' ).get( 0 );

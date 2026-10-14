@@ -47,7 +47,7 @@ function kitaris_environment_indicator_boot(): void
 	}
 
 	$indicator = Indicator::instance();
-	$indicator->set_config(Settings::config());
+	$indicator->set_config(Settings::badge_config());
 
 	if (! has_action('admin_bar_menu', [$indicator, 'add_environment_menu'])) {
 		$indicator->boot();

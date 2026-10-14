@@ -10,6 +10,18 @@
 	padding: 0;
 }
 
+.kitaris-ei-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Second in the markup so Enter saves; shown first. */
+.kitaris-ei-actions .kitaris-ei-reset {
+	order: -1;
+}
+
 .kitaris-ei-list {
 	container-type: inline-size;
 }

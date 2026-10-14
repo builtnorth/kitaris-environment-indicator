@@ -39,6 +39,18 @@ final class Settings
 
 	public static function add_page(): void
 	{
+		/**
+		 * Filters whether Settings → Environment Indicator is shown.
+		 *
+		 * Return false to remove the page, e.g. when labels and colours are set
+		 * in code. Saved settings still apply.
+		 *
+		 * @param bool $show Whether to add the settings page. Default true.
+		 */
+		if (! apply_filters('kitaris_environment_indicator_settings_page', true)) {
+			return;
+		}
+
 		add_options_page(
 			__('Environment Indicator', 'kitaris-environment-indicator'),
 			__('Environment Indicator', 'kitaris-environment-indicator'),
@@ -95,7 +107,8 @@ final class Settings
 	public static function sanitize($input): array
 	{
 		$clean = [];
-		if (! is_array($input)) {
+		// "Reset to defaults" posts reset=1 alongside the fields.
+		if (! is_array($input) || ! empty($input['reset'])) {
 			return $clean;
 		}
 
@@ -123,6 +136,29 @@ final class Settings
 	public static function config(): array
 	{
 		return self::sanitize(get_option(self::OPTION, []));
+	}
+
+	/**
+	 * Saved overrides with any set in code on top: what the badge uses.
+	 *
+	 * @return array<string, array{text?: string, color?: string}>
+	 */
+	public static function badge_config(): array
+	{
+		$saved = self::config();
+
+		/**
+		 * Filters the labels and colours the badge uses.
+		 *
+		 * Receives the saved settings, keyed by environment (local, development,
+		 * staging, production, custom), each with an optional `text` and `color`.
+		 * Values set here win over the settings page.
+		 *
+		 * @param array<string, array{text?: string, color?: string}> $config Saved settings.
+		 */
+		$config = apply_filters('kitaris_environment_indicator_config', $saved);
+
+		return self::sanitize($config);
 	}
 
 	public static function render(): void
@@ -171,7 +207,22 @@ final class Settings
 						</div>
 					</div>
 				</div>
-				<?php submit_button(); ?>
+				<?php // Save comes first so Enter in a field saves; CSS puts Reset on its left. ?>
+				<p class="submit kitaris-ei-actions">
+					<?php
+					submit_button(null, 'primary', 'submit', false);
+					submit_button(
+						__('Reset to defaults', 'kitaris-environment-indicator'),
+						'secondary kitaris-ei-reset',
+						self::OPTION . '[reset]',
+						false,
+						[
+							'id'           => 'kitaris-ei-reset',
+							'data-confirm' => __('Reset every label and colour to its default?', 'kitaris-environment-indicator'),
+						]
+					);
+					?>
+				</p>
 			</form>
 		</div>
 		<?php
