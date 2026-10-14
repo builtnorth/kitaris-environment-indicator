@@ -20,14 +20,14 @@ final class Settings
 
 	/** The indicator's own defaults, shown as placeholders. */
 	private const DEFAULTS = [
-		'local'       => ['text' => 'Local', 'color' => '#7c3aed'],
+		'local'       => ['text' => 'Local', 'color' => '#4ab866'],
 		'development' => ['text' => 'Development', 'color' => '#3858e9'],
-		'staging'     => ['text' => 'Staging', 'color' => '#db7800'],
-		'production'  => ['text' => 'Production', 'color' => '#0cb034'],
+		'staging'     => ['text' => 'Staging', 'color' => '#f0b849'],
+		'production'  => ['text' => 'Production', 'color' => '#cc1818'],
 		// A custom name from the KITARIS_ENVIRONMENT_INDICATOR_CUSTOM constant or
 		// the kitaris_environment_indicator_custom filter; an empty label shows
 		// the name itself.
-		'custom'      => ['text' => '', 'color' => '#64748b'],
+		'custom'      => ['text' => '', 'color' => '#949494'],
 	];
 
 	public static function register(): void
