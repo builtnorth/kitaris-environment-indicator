@@ -19,6 +19,7 @@ Kitaris Environment Indicator adds a small colored badge to the admin bar showin
 * Change any label or dot color under Settings → Environment Indicator, or set them in code.
 * Need an environment WordPress has no type for, like QA or Client Review? Give it a custom name.
 * Shown to anyone who can edit content (contributors and up) by default.
+* Works on phones too: the badge shows as a colored dot, and tapping it shows the label.
 * Lightweight: no front-end assets for visitors, no database tables, one option.
 
 = Set the environment =
