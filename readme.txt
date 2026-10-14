@@ -17,7 +17,7 @@ Kitaris Environment Indicator adds a small coloured badge to the admin bar showi
 * Reads the environment WordPress already knows about (`WP_ENVIRONMENT_TYPE`), so there is nothing to configure.
 * A distinct colour for each environment: local, development, staging and production.
 * Change any label or dot colour under Settings → Environment Indicator.
-* Need an environment WordPress has no type for, like QA or Client Review? Name it with a filter.
+* Need an environment WordPress has no type for, like QA or Client Review? Give it a custom name.
 * Shown to administrators only by default.
 * Lightweight: no front-end assets for visitors, no database tables, one option.
 
@@ -31,17 +31,23 @@ Accepted values are `local`, `development`, `staging` and `production`. WordPres
 
 = Custom environments =
 
-WordPress itself only knows the four types above. To show any other name, return it from a filter:
+WordPress itself only knows the four types above, and treats any other value as `production`. To show another name, keep `WP_ENVIRONMENT_TYPE` set to the type WordPress should behave as, and add a custom name:
 
-`add_filter( 'siratik_environment_indicator_environment', function () { return 'qa'; } );`
+`define( 'SIRATIK_ENVIRONMENT_INDICATOR_CUSTOM', 'qa' );`
 
-It is shown with the Custom colour and labelled with the name ("client-review" shows as "Client Review"), unless you set a Custom label in the settings. Return an empty string to hide the badge.
+Or set it with a filter, which wins over the constant:
+
+`add_filter( 'siratik_environment_indicator_custom', function () { return 'qa'; } );`
+
+It is shown with the Custom colour and labelled with the name ("client-review" shows as "Client Review"), unless you set a Custom label in the settings.
 
 = For developers =
 
 Who sees the badge is filterable:
 
 `add_filter( 'siratik_environment_indicator_show', function ( $show, $environment ) { return current_user_can( 'edit_posts' ); }, 10, 2 );`
+
+Return `false` from the same filter to hide the badge.
 
 == Frequently Asked Questions ==
 
