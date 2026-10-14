@@ -138,23 +138,6 @@ final class Settings
 		?>
 		<div class="wrap kitaris-ei">
 			<h1><?php esc_html_e('Environment Indicator', 'kitaris-environment-indicator'); ?></h1>
-			<p>
-				<?php
-				printf(
-					/* translators: %s: environment name, e.g. "staging". */
-					esc_html__('This site is running as: %s.', 'kitaris-environment-indicator'),
-					'<code>' . esc_html($current) . '</code>'
-				);
-				if ($current_row === 'custom') {
-					echo ' ';
-					printf(
-						/* translators: %s: WordPress environment type, e.g. "staging". */
-						esc_html__('That is a custom name; WordPress itself treats the site as %s.', 'kitaris-environment-indicator'),
-						'<code>' . esc_html(wp_get_environment_type()) . '</code>'
-					);
-				}
-				?>
-			</p>
 			<?php if (! self::is_environment_type_set()) : ?>
 				<div class="notice notice-warning inline">
 					<p>
@@ -172,9 +155,6 @@ final class Settings
 			<form action="options.php" method="post">
 				<?php settings_fields(self::GROUP); ?>
 				<div class="postbox">
-					<div class="postbox-header">
-						<h2 class="hndle is-non-sortable"><?php esc_html_e('Environments', 'kitaris-environment-indicator'); ?></h2>
-					</div>
 					<div class="inside">
 						<div class="kitaris-ei-list">
 							<div class="kitaris-ei-head" aria-hidden="true">

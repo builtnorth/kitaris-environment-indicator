@@ -2,15 +2,7 @@
 
 .kitaris-ei .postbox {
 	max-inline-size: 66rem;
-}
-
-/* Core only pads the title inside a .metabox-holder. */
-.kitaris-ei .postbox-header h2 {
-	margin: 0;
-	padding-block: 8px;
-	padding-inline: 12px;
-	font-size: 14px;
-	line-height: 1.4;
+	margin-block-start: 1rem;
 }
 
 .kitaris-ei .postbox .inside {
