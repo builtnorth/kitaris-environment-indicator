@@ -75,6 +75,4 @@ No. The badge and its styles are only output for users allowed to see it.
 == Changelog ==
 
 = 1.0.0 =
-* Add a Custom row for environments named by the filter
-* Pick colours with the native colour input and describe each field
-* Show the site environment in the admin bar
+* Initial release.
