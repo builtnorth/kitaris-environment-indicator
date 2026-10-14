@@ -309,6 +309,12 @@ final class Settings
 	 */
 	private static function is_environment_type_set(): bool
 	{
-		return ! class_exists(Indicator::class) || Indicator::instance()->is_environment_type_set();
+		// An older copy of the package (bundled by another plugin) may have won
+		// the version check and predate this method; then skip the warning.
+		if (! class_exists(Indicator::class) || ! method_exists(Indicator::class, 'is_environment_type_set')) {
+			return true;
+		}
+
+		return Indicator::instance()->is_environment_type_set();
 	}
 }

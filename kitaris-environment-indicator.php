@@ -19,8 +19,8 @@ declare(strict_types=1);
  */
 
 use KitarisEnvironmentIndicator\Aliases;
+use KitarisEnvironmentIndicator\Plugin;
 use KitarisEnvironmentIndicator\Settings;
-use Siratik\EnvironmentIndicator\Indicator;
 
 defined('ABSPATH') || exit;
 
@@ -36,22 +36,4 @@ Aliases::register();
 
 // siratik/package-loader settles which bundled copy of each package wins once
 // plugins_loaded has run, so the indicator is only touched after that.
-add_action('init', 'kitaris_environment_indicator_boot');
-
-/**
- * Apply the saved labels and colors, then boot the indicator unless another
- * plugin bundling the same package already has.
- */
-function kitaris_environment_indicator_boot(): void
-{
-	if (! class_exists(Indicator::class)) {
-		return;
-	}
-
-	$indicator = Indicator::instance();
-	$indicator->set_config(Settings::badge_config());
-
-	if (! has_action('admin_bar_menu', [$indicator, 'add_environment_menu'])) {
-		$indicator->boot();
-	}
-}
+add_action('init', [Plugin::class, 'boot']);
