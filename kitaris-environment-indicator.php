@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Plugin Name:       Kitaris Environment Indicator
  * Plugin URI:        https://kitaris.com
- * Description:       Shows which environment you are on (local, development, staging or production) in the admin bar, so production is never mistaken for staging.
+ * Description:       Minimal indicator that shows which environment you are on (local, development, staging, production, or custom) in the admin bar.
  * Version:           1.0.0
  * Requires at least: 6.0
  * Requires PHP:      8.1
@@ -24,10 +24,10 @@ use KitarisEnvironmentIndicator\Settings;
 
 defined('ABSPATH') || exit;
 
-// Release zip: load the bundled vendor/. In the monorepo the root autoloader
-// already covers this plugin and the siratik packages.
+// Load the bundled dependencies. A site that installs the plugin with Composer
+// loads them through its own autoloader, so vendor/ may not exist.
 $kitaris_environment_indicator_autoload = __DIR__ . '/vendor/autoload.php';
-if (! class_exists(Settings::class) && is_readable($kitaris_environment_indicator_autoload)) {
+if (is_readable($kitaris_environment_indicator_autoload)) {
 	require_once $kitaris_environment_indicator_autoload;
 }
 
