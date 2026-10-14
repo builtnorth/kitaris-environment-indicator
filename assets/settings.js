@@ -1,6 +1,6 @@
 /**
- * Settings → Environment Indicator: core colour pickers, and a badge preview
- * per environment that follows its label and colour as they change.
+ * Settings → Environment Indicator: core color pickers, and a badge preview
+ * per environment that follows its label and color as they change.
  */
 ( function ( $ ) {
 	$( function () {
@@ -19,7 +19,7 @@
 			var $color = $row.find( '.kitaris-ei-color' );
 			var defaultColor = $color.data( 'default-color' );
 
-			// Only a full hex colour reaches the preview; anything else shows the default.
+			// Only a full hex color reaches the preview; anything else shows the default.
 			function setDot( value ) {
 				var valid = /^#([0-9a-f]{3}){1,2}$/i.test( value || '' );
 				preview.style.setProperty( '--kitaris-ei-dot', valid ? value : defaultColor );

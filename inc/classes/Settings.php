@@ -7,7 +7,7 @@ namespace KitarisEnvironmentIndicator;
 use Siratik\EnvironmentIndicator\Indicator;
 
 /**
- * Settings → Environment Indicator: a label and a dot colour per environment.
+ * Settings → Environment Indicator: a label and a dot color per environment.
  *
  * Empty fields keep the indicator's built-in defaults.
  */
@@ -42,7 +42,7 @@ final class Settings
 		/**
 		 * Filters whether Settings → Environment Indicator is shown.
 		 *
-		 * Return false to remove the page, e.g. when labels and colours are set
+		 * Return false to remove the page, e.g. when labels and colors are set
 		 * in code. Saved settings still apply.
 		 *
 		 * @param bool $show Whether to add the settings page. Default true.
@@ -61,7 +61,7 @@ final class Settings
 	}
 
 	/**
-	 * Core colour picker plus the page's own styles and live preview.
+	 * Core color picker plus the page's own styles and live preview.
 	 */
 	public static function enqueue(string $hook_suffix): void
 	{
@@ -99,7 +99,7 @@ final class Settings
 	}
 
 	/**
-	 * Keep only known environments, a plain-text label and a valid hex colour.
+	 * Keep only known environments, a plain-text label and a valid hex color.
 	 *
 	 * @param mixed $input Raw form value.
 	 * @return array<string, array{text?: string, color?: string}>
@@ -148,7 +148,7 @@ final class Settings
 		$saved = self::config();
 
 		/**
-		 * Filters the labels and colours the badge uses.
+		 * Filters the labels and colors the badge uses.
 		 *
 		 * Receives the saved settings, keyed by environment (local, development,
 		 * staging, production, custom), each with an optional `text` and `color`.
@@ -196,7 +196,7 @@ final class Settings
 							<div class="kitaris-ei-head" aria-hidden="true">
 								<span><?php esc_html_e('Environment', 'kitaris-environment-indicator'); ?></span>
 								<span><?php esc_html_e('Label', 'kitaris-environment-indicator'); ?></span>
-								<span><?php esc_html_e('Dot colour', 'kitaris-environment-indicator'); ?></span>
+								<span><?php esc_html_e('Dot color', 'kitaris-environment-indicator'); ?></span>
 								<span><?php esc_html_e('Preview', 'kitaris-environment-indicator'); ?></span>
 							</div>
 							<?php
@@ -218,7 +218,7 @@ final class Settings
 						false,
 						[
 							'id'           => 'kitaris-ei-reset',
-							'data-confirm' => __('Reset every label and colour to its default?', 'kitaris-environment-indicator'),
+							'data-confirm' => __('Reset every label and color to its default?', 'kitaris-environment-indicator'),
 						]
 					);
 					?>
@@ -229,9 +229,9 @@ final class Settings
 	}
 
 	/**
-	 * One environment: slug, label, dot colour and badge preview.
+	 * One environment: slug, label, dot color and badge preview.
 	 *
-	 * @param array{text: string, color: string}   $default Built-in label and colour.
+	 * @param array{text: string, color: string}   $default Built-in label and color.
 	 * @param array{text?: string, color?: string} $saved   Saved overrides.
 	 */
 	private static function render_row(string $env, array $default, array $saved, bool $is_current, string $current): void
@@ -273,7 +273,7 @@ final class Settings
 				<label class="kitaris-ei-field__label" for="<?php echo esc_attr($id); ?>-color">
 					<?php
 					/* translators: %s: environment type. */
-					printf(esc_html__('Dot colour for %s', 'kitaris-environment-indicator'), esc_html($env));
+					printf(esc_html__('Dot color for %s', 'kitaris-environment-indicator'), esc_html($env));
 					?>
 				</label>
 				<input type="text" class="kitaris-ei-color"

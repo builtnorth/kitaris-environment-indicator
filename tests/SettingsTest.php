@@ -22,7 +22,7 @@ final class SettingsTest extends TestCase
 		]);
 	}
 
-	public function test_keeps_valid_labels_and_colours_per_known_environment(): void
+	public function test_keeps_valid_labels_and_colors_per_known_environment(): void
 	{
 		$clean = Settings::sanitize([
 			'staging'    => ['text' => ' Stage <b>2</b> ', 'color' => '#ff0000'],
@@ -38,7 +38,7 @@ final class SettingsTest extends TestCase
 		);
 	}
 
-	public function test_drops_unknown_environments_invalid_colours_and_non_arrays(): void
+	public function test_drops_unknown_environments_invalid_colors_and_non_arrays(): void
 	{
 		$this->assertSame([], Settings::sanitize('nope'));
 		$this->assertSame(

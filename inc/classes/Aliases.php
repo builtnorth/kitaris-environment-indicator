@@ -7,7 +7,7 @@ namespace KitarisEnvironmentIndicator;
 /**
  * Kitaris names for the bundled package's constant and filters.
  *
- * The package (siratik/environment-indicator) owns the behaviour; this plugin
+ * The package (siratik/environment-indicator) owns the behavior; this plugin
  * only forwards its own names into it, so the readme can document one prefix.
  * The siratik_* names keep working alongside these.
  *

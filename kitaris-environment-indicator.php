@@ -39,7 +39,7 @@ Aliases::register();
 add_action('init', 'kitaris_environment_indicator_boot');
 
 /**
- * Apply the saved labels and colours, then boot the indicator unless another
+ * Apply the saved labels and colors, then boot the indicator unless another
  * plugin bundling the same package already has.
  */
 function kitaris_environment_indicator_boot(): void
