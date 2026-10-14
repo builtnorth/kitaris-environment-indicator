@@ -21,7 +21,7 @@ final class Settings
 	/** The indicator's own defaults, shown as placeholders. */
 	private const DEFAULTS = [
 		'local'       => ['text' => 'Local', 'color' => '#4ab866'],
-		'development' => ['text' => 'Development', 'color' => '#3858e9'],
+		'development' => ['text' => 'Development', 'color' => '#4ab866'],
 		'staging'     => ['text' => 'Staging', 'color' => '#f0b849'],
 		'production'  => ['text' => 'Production', 'color' => '#cc1818'],
 		// A custom name from the KITARIS_ENVIRONMENT_INDICATOR_CUSTOM constant or
