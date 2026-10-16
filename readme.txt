@@ -4,7 +4,7 @@ Tags: environment, staging, development, admin bar, indicator
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,10 @@ No. The badge and its styles are only output for users allowed to see it.
 6. A custom environment with its own label.
 
 == Changelog ==
+
+= 1.0.1 =
+* Drop the Update URI header from the WordPress.org plugin
+* Set Update URI so wordpress.org never offers updates for this plugin
 
 = 1.0.0 =
 * Initial release.
