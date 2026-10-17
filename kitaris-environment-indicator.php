@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Kitaris Environment Indicator
- * Plugin URI:        https://kitaris.com
+ * Plugin URI:        
+ * Update URI:        false
  * Description:       Minimal indicator that shows which environment you are on (local, development, staging, production, or custom) in the admin bar.
  * Version:           1.0.2
  * Requires at least: 6.0
  * Requires PHP:      8.1
  * Author:            Kitaris
  * Author URI:        https://kitaris.com
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       kitaris-environment-indicator
  *
  * @package KitarisEnvironmentIndicator

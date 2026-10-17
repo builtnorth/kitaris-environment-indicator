@@ -2,11 +2,15 @@
 	"name": "kitaris/environment-indicator",
 	"description": "Shows which environment a WordPress site is running as (local, development, staging or production) in the admin bar.",
 	"type": "wordpress-plugin",
-	"license": "GPL-2.0-or-later",
+	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
 			"name": "Kitaris",
 			"homepage": "https://kitaris.com"
+		},
+		{
+			"name": "Built North",
+			"homepage": "https://builtnorth.co"
 		}
 	],
 	"require": {
