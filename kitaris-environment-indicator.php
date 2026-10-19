@@ -32,6 +32,26 @@ if (is_readable($kitaris_environment_indicator_autoload)) {
 	require_once $kitaris_environment_indicator_autoload;
 }
 
+/**
+ * Missing or partial vendor/ (a deploy without dependencies, an unfinished
+ * upload): stay inert and tell admins, rather than fatal on every request.
+ */
+if (! class_exists(Settings::class)) {
+	add_action(
+		'admin_notices',
+		static function (): void {
+			if (current_user_can('activate_plugins')) {
+				printf(
+					'<div class="notice notice-error"><p>%s</p></div>',
+					esc_html__('Kitaris Environment Indicator could not load its bundled files (vendor/ is missing or incomplete). Reinstall the plugin.', 'kitaris-environment-indicator')
+				);
+			}
+		}
+	);
+
+	return;
+}
+
 Settings::register();
 Aliases::register();
 
