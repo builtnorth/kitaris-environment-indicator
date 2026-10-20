@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace KitarisEnvironmentIndicator;
 
+defined('ABSPATH') || exit;
+
 use Siratik\EnvironmentIndicator\Indicator;
 
 /**

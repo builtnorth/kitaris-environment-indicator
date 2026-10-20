@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace KitarisEnvironmentIndicator;
 
+defined('ABSPATH') || exit;
+
 /**
  * Kitaris names for the bundled package's constant and filters.
  *
