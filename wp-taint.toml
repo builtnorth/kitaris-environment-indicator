@@ -1,0 +1,20 @@
+# wp-taint project config (https://packagist.org/packages/enshrined/wp-taint)
+#
+# Scanner requires PHP 8.2+. Plugin runtime stays 8.1 — do not add
+# enshrined/wp-taint to composer.json. From the monorepo root:
+#   make taint
+#   make taint PLUGIN=kitaris-environment-indicator
+#
+# Regenerating the baseline (after fixing findings, on the protected branch):
+#   wp-taint scan --generate-baseline=wp-taint-baseline.json
+
+[scan]
+paths = ["inc", "kitaris-environment-indicator.php", "uninstall.php"]
+bootstrap = ["wp-taint-bootstrap.php"]
+exclude = ["*/vendor/*", "*/node_modules/*", "*/dist/*", "*/build/*", "*/tests/*", "*/bin/*"]
+
+[scan.options]
+jobs = 4
+fail_on = "high"
+min_severity = "low"
+baseline = "wp-taint-baseline.json"

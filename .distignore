@@ -9,3 +9,6 @@ composer.lock
 phpcs.xml
 .wp-env.json
 .wordpress-org
+wp-taint.toml
+wp-taint-baseline.json
+wp-taint-bootstrap.php
