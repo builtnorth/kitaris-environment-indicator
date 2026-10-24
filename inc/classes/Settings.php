@@ -170,6 +170,8 @@ final class Settings
 		}
 
 		$saved   = self::config();
+		// The current row previews what the badge shows, code overrides included.
+		$badge   = self::badge_config();
 		$current = self::current_environment();
 		// A name outside the four core types is shown by the Custom row.
 		$current_row = isset(self::DEFAULTS[$current]) && $current !== 'custom' ? $current : ($current !== '' ? 'custom' : '');
@@ -203,7 +205,8 @@ final class Settings
 							</div>
 							<?php
 							foreach (self::DEFAULTS as $env => $default) {
-								self::render_row($env, $default, $saved[$env] ?? [], $env === $current_row, $current);
+								$is_current = $env === $current_row;
+								self::render_row($env, $default, $saved[$env] ?? [], $is_current, $current, $is_current ? ($badge[$env] ?? []) : null);
 							}
 							?>
 						</div>
@@ -236,11 +239,16 @@ final class Settings
 	 * @param array{text: string, color: string}   $default Built-in label and color.
 	 * @param array{text?: string, color?: string} $saved   Saved overrides.
 	 */
-	private static function render_row(string $env, array $default, array $saved, bool $is_current, string $current): void
+	/**
+	 * @param array<string, string>      $saved   Saved values, shown in the fields.
+	 * @param array<string, string>|null $preview What the badge uses for this row (null: the saved values).
+	 */
+	private static function render_row(string $env, array $default, array $saved, bool $is_current, string $current, ?array $preview = null): void
 	{
 		$name  = self::OPTION . '[' . $env . ']';
 		$id    = 'kitaris-ei-' . $env;
-		$color = $saved['color'] ?? $default['color'];
+		$shown = $preview ?? $saved;
+		$color = $shown['color'] ?? $default['color'];
 
 		// What the badge shows when the label is empty.
 		$fallback = $default['text'];
@@ -249,7 +257,7 @@ final class Settings
 				? ucwords(str_replace(['-', '_'], ' ', $current))
 				: __('Custom', 'kitaris-environment-indicator');
 		}
-		$text = ($saved['text'] ?? '') !== '' ? $saved['text'] : $fallback;
+		$text = ($shown['text'] ?? '') !== '' ? $shown['text'] : $fallback;
 		?>
 		<div class="kitaris-ei-row">
 			<div class="kitaris-ei-row__env">

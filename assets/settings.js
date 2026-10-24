@@ -25,8 +25,18 @@
 				preview.style.setProperty( '--kitaris-ei-dot', valid ? value : defaultColor );
 			}
 
+			// The label as sanitize_text_field() saves it: no tags, no %XX
+			// octets, whitespace collapsed.
+			function cleanLabel( value ) {
+				return String( value || '' )
+					.replace( /<[^>]*>/g, '' )
+					.replace( /%[a-f0-9]{2}/gi, '' )
+					.replace( /\s+/g, ' ' )
+					.trim();
+			}
+
 			$label.on( 'input', function () {
-				$text.text( $label.val().trim() || $text.data( 'fallback' ) );
+				$text.text( cleanLabel( $label.val() ) || $text.data( 'fallback' ) );
 			} );
 
 			$color.wpColorPicker( {
