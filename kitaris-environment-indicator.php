@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Plugin URI:
  * Description:       Minimal indicator that shows which environment you are on (local, development, staging, production, or custom) in the admin bar.
  * Version:           1.0.3
- * Requires at least: 6.0
+ * Requires at least: 7.0
  * Requires PHP:      8.1
  * Author:            Kitaris
  * Author URI:        https://kitaris.com
