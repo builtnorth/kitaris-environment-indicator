@@ -14,7 +14,7 @@ jobs:
     uses: builtnorth/.github/.github/workflows/wp-plugin-ci.yml@main
     with:
       php-versions: '["8.1", "8.2", "8.3", "8.4"]'
-      wordpress-versions: '["7.0", "latest"]'
+      wordpress-versions: '["6.0", "latest"]'
       run-wp-taint: true
     secrets:
       ORG_REPO_TOKEN: ${{ secrets.ORG_REPO_TOKEN }}
