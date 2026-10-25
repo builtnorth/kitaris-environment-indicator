@@ -1,0 +1,22 @@
+# Keep development-only files out of source archives.
+#
+# The WordPress.org zip is built from .distignore, but `git archive` and GitHub
+# source downloads honor these rules, so a plugin installed from a source
+# archive doesn't put dev tooling in the webroot either. Keep in step with
+# .distignore.
+
+/tests/                 export-ignore
+/.github/               export-ignore
+/.wordpress-org/        export-ignore
+/.gitattributes         export-ignore
+/.gitignore             export-ignore
+/.distignore            export-ignore
+/.wp-env.json           export-ignore
+/phpunit.xml.dist       export-ignore
+/.phpunit.result.cache  export-ignore
+/phpcs.xml              export-ignore
+
+# wp-taint scanner config (CI reads these from the checkout).
+/wp-taint.toml           export-ignore
+/wp-taint-baseline.json  export-ignore
+/wp-taint-bootstrap.php  export-ignore
