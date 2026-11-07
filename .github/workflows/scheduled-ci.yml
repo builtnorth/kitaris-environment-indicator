@@ -13,7 +13,7 @@ jobs:
       security-events: write
     uses: builtnorth/.github/.github/workflows/wp-plugin-ci.yml@main
     with:
-      php-versions: '["8.2", "8.3", "8.4"]'
+      php-versions: '["8.1", "8.2", "8.3", "8.4"]'
       wordpress-versions: '["6.0", "latest"]'
       run-wp-taint: true
     secrets:
