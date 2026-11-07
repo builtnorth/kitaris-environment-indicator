@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Description:       Minimal indicator that shows which environment you are on (local, development, staging, production, or custom) in the admin bar.
  * Version:           1.0.3
  * Requires at least: 6.0
- * Requires PHP:      8.1
+ * Requires PHP:      8.2
  * Author:            Kitaris
  * Author URI:        https://kitaris.com
  * License:           GPL-3.0-or-later
